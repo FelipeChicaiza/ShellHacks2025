@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { agentManager } from '../../../agents/AgentManager';
+import { agentManager } from '../../../agents/AgentManager.js';
 
 export async function GET() {
   try {
