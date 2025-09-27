@@ -4,6 +4,7 @@ import { useLoader } from "@react-three/fiber";
 import { AdditiveBlending } from 'three';
 
 // 🌍 Earth Component
+
 export function Earth() {
   // Use useLoader to load the texture from the public folder
   // NOTE: Ensure '/textures/earth_day.png' exists in your public directory.
@@ -23,6 +24,7 @@ export function Earth() {
 }
 
 // ✨ Glowing Atmosphere Effect
+
 export function Atmosphere() {
     return (
         <mesh scale={[2.6, 2.6, 2.6]}>
