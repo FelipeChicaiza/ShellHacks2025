@@ -21,11 +21,11 @@ export const createNews = async (req, res, next) => {
   }
 };
 
-// Get all news posts for a specific state
-export const getNewsByState = async (req, res, next) => {
+// Get all news posts for a specific city
+export const getNewsByCity = async (req, res, next) => {
   try {
-    const { state } = req.params;
-    const news = await News.find({ state });
+    const { city } = req.params;
+    const news = await News.find({ city });
     res.json({ success: true, data: news });
   } catch (err) {
     next(err);

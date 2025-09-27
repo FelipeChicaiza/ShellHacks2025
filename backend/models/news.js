@@ -21,9 +21,10 @@ const newsSchema = new mongoose.Schema({
     },
     required: false,
   },
-  state: { 
-    type: String, 
-    required: [true, "State is required"] },
+  city: {
+    type: String,
+    required: [true, "City is required"]
+  },
 
   credibility_score: {
     type: Number,
