@@ -1,0 +1,101 @@
+[
+  {
+    "title": "Major Tech Conference Announced in Miami",
+    "summary": "A new conference focusing on AI and Web3 is coming to Miami this winter.",
+    "source": "Tech Today",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 85
+  },
+  {
+    "title": "New York Art Exhibit Opens to Public",
+    "summary": "The Metropolitan Museum of Art has unveiled its latest exhibit on modern sculpture.",
+    "source": "NY Arts Journal",
+    "geotag": {
+      "lat": 40.7128,
+      "lng": -74.0060
+    },
+    "city": "new-york",
+    "credibility_score": 92
+  },
+  {
+    "title": "London Sees Record Tourism Numbers",
+    "summary": "Tourism in London has surpassed pre-pandemic levels, officials report.",
+    "source": "UK Travel News",
+    "geotag": {
+      "lat": 51.5074,
+      "lng": -0.1278
+    },
+    "city": "london",
+    "credibility_score": 88
+  },
+  {
+    "title": "Tokyo Cherry Blossoms Peak Early",
+    "summary": "An early bloom has brought thousands of tourists to see the cherry blossoms in Tokyo.",
+    "source": "Japan Times",
+    "geotag": {
+        "lat": 35.6895,
+        "lng": 139.6917
+    },
+    "city": "tokyo",
+    "credibility_score": 95
+  },
+  {
+    "title": "Major Tech Conference Announced in Miami",
+    "summary": "A new conference focusing on AI and Web3 is coming to Miami this winter.",
+    "source": "Tech Today",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 85
+  },
+  {
+    "title": "Miami Startup Secures Series A Funding",
+    "summary": "A Miami-based AI healthcare startup raised $20M to expand across Latin America.",
+    "source": "Venture Daily",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 82
+  },
+  {
+    "title": "Crypto Hub Expands in Downtown Miami",
+    "summary": "New co-working spaces dedicated to blockchain companies are opening near Brickell.",
+    "source": "Finance Weekly",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 79
+  },
+  {
+    "title": "University of Miami Launches AI Research Lab",
+    "summary": "The university unveiled a new lab to focus on AI in climate science and healthcare.",
+    "source": "Campus Times",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 91
+  },
+  {
+    "title": "Miami Hosts Global E-Sports Finals",
+    "summary": "Over 30,000 fans are expected for the world’s largest e-sports competition this fall.",
+    "source": "Gaming Insider",
+    "geotag": {
+      "lat": 25.7617,
+      "lng": -80.1918
+    },
+    "city": "miami",
+    "credibility_score": 86
+  }
+]

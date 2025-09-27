@@ -1,16 +1,15 @@
 "use client"
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
+import { AnimatePresence } from 'framer-motion';
 import * as THREE from "three";
-
 
 import { Earth, Atmosphere } from './GlobePrimitives';
 import { Marker, CameraController } from './GlobeMarker';
 import NewsPanel from './NewsPanel';
 
-// (latLonToVector3 function remains the same)
 function latLonToVector3(lat: number, lon: number, radius: number) {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
@@ -25,6 +24,9 @@ export default function Globe() {
   const [allNewsData, setAllNewsData] = useState([]);
   const [hoveredCityNews, setHoveredCityNews] = useState([]);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  
+  // Ref to manage the closing timer
+  const closeTimer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const API_URL = "http://localhost:5001/api/news";
@@ -38,8 +40,12 @@ export default function Globe() {
       .catch(error => console.error("Error fetching news data:", error));
   }, []);
 
-  // --- NEW HOVER HANDLERS ---
   const handleMarkerHover = useCallback((hoveredItem) => {
+    // If a close timer is running, cancel it
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+    }
+
     const cityNews = allNewsData.filter(
       (item) => item.city.toLowerCase() === hoveredItem.city.toLowerCase()
     );
@@ -51,16 +57,22 @@ export default function Globe() {
     setTarget(new THREE.Vector3(x, y, z));
   }, [allNewsData]);
 
-  const handleMarkerLeave = () => {
-    setIsPanelOpen(false);
-    setHoveredCityNews([]);
-    // Optional: Reset camera target when not hovering
-    // setTarget(null); 
+  // When the mouse leaves a pin or the panel, start a timer to close it
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => {
+      setIsPanelOpen(false);
+    }, 200); // 200ms delay
   };
-  // -------------------------
+
+  // When the mouse enters the panel, cancel the close timer
+  const handlePanelEnter = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+    }
+  };
 
   return (
-    <div className="w-full h-[850px] relative">
+    <div className="w-full h-screen relative">
       <Canvas camera={{ position: [0, 0, 7] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 3, 5]} intensity={1.5} />
@@ -73,7 +85,7 @@ export default function Globe() {
             key={item._id}
             newsItem={item}
             onPointerOver={handleMarkerHover}
-            onPointerOut={handleMarkerLeave}
+            onPointerOut={handleLeave} // Use the new leave handler
           />
         ))}
 
@@ -81,12 +93,15 @@ export default function Globe() {
         <CameraController target={target} />
       </Canvas>
 
-      {isPanelOpen && (
-        <NewsPanel 
-          news={hoveredCityNews} 
-          onClose={handleMarkerLeave} 
-        />
-      )}
+      <AnimatePresence>
+        {isPanelOpen && (
+          <NewsPanel 
+            news={hoveredCityNews} 
+            onClose={handleLeave} 
+            onMouseEnter={handlePanelEnter}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
