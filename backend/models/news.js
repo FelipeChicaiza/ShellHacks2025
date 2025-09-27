@@ -3,15 +3,16 @@ import mongoose from 'mongoose';
 const newsSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, "Title is required"],
+    trim: true
   },
   summary: {
     type: String,
-    required: true,
+    required: [true, "Summary is required"],
   },
   source: {
     type: String,
-    required: true,
+    required: [true, "Source is required"],
   },
   geotag: {
     type: {
@@ -20,6 +21,10 @@ const newsSchema = new mongoose.Schema({
     },
     required: false,
   },
+  state: { 
+    type: String, 
+    required: [true, "State is required"] },
+
   credibility_score: {
     type: Number,
     default: 0,
