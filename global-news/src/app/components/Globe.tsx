@@ -1,11 +1,19 @@
 "use client"
 
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { OrbitControls, Html, Stars } from "@react-three/drei";
-import { useState, useRef } from "react";
+import React, {useState, useCallback} from 'react';
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
 
-// Convert latitude & longitude into 3D coords
+// --- ACTUAL IMPORTS FROM SEPARATED FILES ---
+// NOTE: Please ensure the relative paths below match your local file structure 
+// (e.g., if you moved them to 'src/app/components/', the path might be './GlobePrimitives').
+import { Earth, Atmosphere } from './GlobePrimitives'; 
+import { Marker, CameraController } from './GlobeMarker';
+
+// Convert latitude & longitude into 3D coords utility
+// This function remains here because the Globe component directly uses it 
+// to calculate the camera target in handleMarkerClick.
 function latLonToVector3(lat: number, lon: number, radius: number) {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
@@ -17,98 +25,24 @@ function latLonToVector3(lat: number, lon: number, radius: number) {
   return [x, y, z];
 }
 
-// Smooth camera movement
-function CameraController({ target }: { target: THREE.Vector3 | null }) {
-  const { camera } = useThree();
-  useFrame(() => {
-    if (target) {
-      camera.position.lerp(target, 0.05);
-      camera.lookAt(0, 0, 0);
-    }
-  });
-  return null;
-}
-
-// 🌍 Earth with day texture only (now reacts to lighting)
-function Earth() {
-  const dayTexture = useLoader(THREE.TextureLoader, "/textures/earth_day.png");
-
-  return (
-    <mesh>
-      <sphereGeometry args={[2.5, 64, 64]} />
-      {/* Use a Standard Material to react to light */}
-      <meshStandardMaterial map={dayTexture} metalness={0.4} roughness={0.7} />
-    </mesh>
-  );
-}
-
-// 📍 Clickable marker with a pulsing effect and tooltip
-function Marker({ name, lat, lon, onClick }: { name: string; lat: number; lon: number; onClick: () => void }) {
-  const [hovered, setHovered] = useState(false);
-  const pos = latLonToVector3(lat, lon, 2.52);
-
-  const innerRef = useRef<THREE.Mesh>(null!);
-
-  useFrame(({ clock }) => {
-    // Pulse animation for the marker's size
-    const scale = 1 + Math.sin(clock.elapsedTime * 5) * 0.2;
-    if (innerRef.current) {
-        innerRef.current.scale.set(scale, scale, scale);
-    }
-  });
-
-  return (
-    <group position={pos} onClick={onClick}>
-      {/* Invisible hover area around the marker */}
-      <mesh
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <sphereGeometry args={[0.03, 16, 16]} />
-        <meshBasicMaterial transparent opacity={0} />
-      </mesh>
-
-      {/* The pulsing inner dot */}
-      <mesh ref={innerRef}>
-        <sphereGeometry args={[0.03, 16, 16]} />
-        <meshBasicMaterial color="yellow" />
-      </mesh>
-
-      {hovered && (
-        <Html distanceFactor={10} position={[0.1, 0, 0]}>
-            <div className="bg-black text-white px-2 py-1 rounded text-xs shadow-lg">
-              {name}
-            </div>
-          </Html>
-      )}
-    </group>
-  );
-}
-
-// ✨ Glowing atmosphere effect
-function Atmosphere() {
-    return (
-        <mesh scale={[2.6, 2.6, 2.6]}>
-            <sphereGeometry args={[1, 64, 64]} />
-            <meshStandardMaterial color="rgba(0, 170, 255, 1)" transparent opacity={0.20} />
-        </mesh>
-    );
-}
+// --- MAIN GLOBE SCENE COMPONENT ---
 
 export default function Globe() {
   const [target, setTarget] = useState<THREE.Vector3 | null>(null);
 
-  const markers = [
-    { name: "Miami", lat: 25.7617, lon: -80.1918 },
-    { name: "New York", lat: 40.7128, lon: -74.006 },
-    { name: "London", lat: 51.5074, lon: -0.1278 },
-    { name: "Tokyo", lat: 35.6895, lon: 139.6917 },
+  // In a real app, this data would come from your main App state
+  const mockNewsData = [
+    { name: "Miami News", lat: 25.7617, lon: -80.1918 },
+    { name: "New York Report", lat: 40.7128, lon: -74.006 },
+    { name: "London Headline", lat: 51.5074, lon: -0.1278 },
+    { name: "Tokyo Event", lat: 35.6895, lon: 139.6917 },
   ];
 
-  const handleMarkerClick = (lat: number, lon: number) => {
-    const [x, y, z] = latLonToVector3(lat, lon, 5.0);
+  const handleMarkerClick = useCallback((lat: number, lon: number) => {
+    // 5.0 is the target distance from the center of the globe
+    const [x, y, z] = latLonToVector3(lat, lon, 5.0); 
     setTarget(new THREE.Vector3(x, y, z));
-  };
+  }, []);
 
   return (
     <div className="w-full h-[850px]">
@@ -120,14 +54,14 @@ export default function Globe() {
         {/* A starfield background */}
         <Stars />
 
-        {/* The Earth */}
+        {/* The Earth (Imported from GlobePrimitives) */}
         <Earth />
 
-        {/* The atmosphere effect */}
+        {/* The atmosphere effect (Imported from GlobePrimitives) */}
         <Atmosphere />
 
-        {/* Markers */}
-        {markers.map((m, i) => (
+        {/* Markers (Imported from GlobeMarker) */}
+        {mockNewsData.map((m, i) => (
           <Marker
             key={i}
             name={m.name}
@@ -138,6 +72,7 @@ export default function Globe() {
         ))}
 
         <OrbitControls enableZoom={Boolean(target)} />
+        {/* Camera Controller (Imported from GlobeMarker) */}
         <CameraController target={target} />
       </Canvas>
     </div>
