@@ -22,12 +22,14 @@ const newsRouter = Router();
 
 // Example route to get all news posts
 newsRouter.get('/', (req, res) => {
+
   res.send({title: "Fetch all news posts"});
 });
 
 
-newsRouter.get('/id', (req, res) => {
-  res.send({title: "Fetch news post by ID"});
+newsRouter.get('/state/:state', (req, res) => {
+
+  res.send({title: "Fetch news post by state"});
 });
 // Example route to create a new news post
 newsRouter.post('/', (req, res) => {
