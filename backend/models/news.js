@@ -14,6 +14,15 @@ const newsSchema = new mongoose.Schema({
     type: String,
     required: [true, "Source is required"],
   },
+  publishedAt: {
+    type: Date,
+    required: false,
+  },
+  factCheckStatus: {
+    type: String,
+    enum: ['verified', 'unverified', 'unknown'],
+    default: 'unknown'
+  },
   geotag: {
     type: {
       lat: Number,

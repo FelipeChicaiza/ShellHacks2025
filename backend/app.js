@@ -3,6 +3,7 @@ import { PORT } from './config/env.js';
 
 import cors from 'cors';
 import newsRouter from './routes/news.routes.js';
+import agentsRouter from './routes/agents.routes.js';
 import connectToDatabase from './database/mongodb.js';
 
 import errorMiddleware from './middlewares/error.middleware.js';
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/news', newsRouter);
+// agent control endpoints (server-only)
+app.use('/api/agents', agentsRouter);
 app.use(express.urlencoded({ extended: true }));
 
 app.use(errorMiddleware);
