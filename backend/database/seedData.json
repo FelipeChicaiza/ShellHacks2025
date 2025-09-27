@@ -7,7 +7,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 85
   },
   {
@@ -18,7 +18,7 @@
       "lat": 40.7128,
       "lng": -74.0060
     },
-    "city": "new-york",
+    "city": "New-York",
     "credibility_score": 92
   },
   {
@@ -29,7 +29,7 @@
       "lat": 51.5074,
       "lng": -0.1278
     },
-    "city": "london",
+    "city": "London",
     "credibility_score": 88
   },
   {
@@ -40,7 +40,7 @@
         "lat": 35.6895,
         "lng": 139.6917
     },
-    "city": "tokyo",
+    "city": "Tokyo",
     "credibility_score": 95
   },
   {
@@ -51,7 +51,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 85
   },
   {
@@ -62,7 +62,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 82
   },
   {
@@ -73,7 +73,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 79
   },
   {
@@ -84,7 +84,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 91
   },
   {
@@ -95,7 +95,7 @@
       "lat": 25.7617,
       "lng": -80.1918
     },
-    "city": "miami",
+    "city": "Miami",
     "credibility_score": 86
   }
 ]
