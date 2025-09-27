@@ -32,12 +32,15 @@ export default function Globe() {
     // --- IMPORTANT ---
 
     // los peleles tiene que cambiar esto al verdadero API
-    const API_URL = "http://localhost:8000/api/news";
+    const API_URL = "http://localhost:5001/api/news";
 
+    // this is basically the GET 
     fetch(API_URL)
       .then(response => response.json())
-      .then(data => {
-        setNewsData(data);
+      .then(apiResponse => {
+        if (apiResponse.success) {
+            setNewsData(apiResponse.data);
+        }
       })
       .catch(error => console.error("Error fetching news data:", error));
   }, []); // The empty array ensures this runs only once
