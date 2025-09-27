@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
+    <main className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white pt-10">
       {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">🌍 Global News Network</h1>
+      <h1 className="text-8xl font-bold mb-4"> Global News Network</h1>
       <p className="mb-6 text-lg text-gray-300">
         Explore trusted local stories around the world
       </p>

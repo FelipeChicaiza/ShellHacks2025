@@ -62,7 +62,7 @@ export function Marker({ newsItem, onPointerOver, onPointerOut }) {
       {/* Visible yellow pin - increased from 0.03 to 0.05 */}
       <mesh ref={innerRef}>
         <sphereGeometry args={[0.05, 16, 16]} />
-        <meshBasicMaterial color="#facc15" />
+        <meshBasicMaterial color="rgba(253, 216, 66, 1)" />
       </mesh>
     </group>
   );
