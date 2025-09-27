@@ -1,6 +1,7 @@
 import Globe from "./components/Globe"; 
 import Link from "next/link";
 
+
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
