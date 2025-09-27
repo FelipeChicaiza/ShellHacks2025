@@ -42,7 +42,7 @@ export class FactCheckAgent extends BaseAgent {
   }
 
   async analyzeContent(newsPost) {
-    const prompt = `Analyze the following news content for factual accuracy indicators:\n\nTitle: ${newsPost.title}\nContent: ${newsPost.content}\n\nRate the content from 0-100 based on: 1. Presence of specific facts and data 2. Use of quotes and citations 3. Objective tone vs. sensational language 4. Logical consistency\n\nReturn only a numerical score.`;
+    const prompt = `Analyze the following news content for factual accuracy indicators:\n\nTitle: ${newsPost.title}\nContent: ${newsPost.content}\n\nRate the content from 0-100 based on: 1. Presence of specific facts and data 2. Use of quotes and citations 3. Objective tone vs. sensational language 4. Logical consistency\n\nReturn only a numerical score in integers.`;
     try {
       const response = await this.googleAI.generateText(prompt);
       const match = response.match(/\d+/);
@@ -54,7 +54,7 @@ export class FactCheckAgent extends BaseAgent {
   }
 
   basicContentAnalysis(newsPost) {
-    let score = 70;
+    let score = 50;
     if ((newsPost.content || '').includes('according to') || (newsPost.content || '').includes('reported')) score += 10;
     if ((newsPost.content || '').includes('"') && (newsPost.content || '').split('"').length > 2) score += 5;
     if ((newsPost.content || '').length > 200) score += 5;

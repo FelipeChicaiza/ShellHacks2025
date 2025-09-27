@@ -77,9 +77,9 @@ export class AgentManager {
     const totalTasks = loopMetrics.tasksCompleted + summarizerMetrics.tasksCompleted + factCheckMetrics.tasksCompleted;
     const totalFailures = loopMetrics.tasksFailed + summarizerMetrics.tasksFailed + factCheckMetrics.tasksFailed;
     const successRate = totalTasks > 0 ? (totalTasks - totalFailures) / totalTasks : 1;
-    let systemHealth = 'healthy';
-    if (successRate >= 0.9) systemHealth = 'healthy';
-    else if (successRate >= 0.7) systemHealth = 'degraded';
+    let systemHealth = 'Healthy';
+    if (successRate >= 0.9) systemHealth = 'Healthy';
+    else if (successRate >= 0.7) systemHealth = 'Degraded';
     else systemHealth = 'error';
     return {
       agentMetrics: {

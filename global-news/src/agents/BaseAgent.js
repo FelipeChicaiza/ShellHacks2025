@@ -45,13 +45,13 @@ export class GoogleAIService {
       try {
         this.genAI = new GoogleGenerativeAI(apiKey);
         this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-        console.log('✅ Google Gemini AI initialized successfully');
+        
       } catch (err) {
         console.warn('Google AI initialization failed, falling back to mock responses', err);
         this.genAI = undefined;
       }
     } else {
-      console.log('⚠️ Google AI API key not found, using fallback responses');
+      console.log('Google AI API key not found, using fallback responses');
     }
   }
 
@@ -61,7 +61,7 @@ export class GoogleAIService {
         const result = await this.model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
-        console.log('🤖 Google Gemini AI response generated successfully');
+        console.log('Google Gemini AI response generated successfully');
         return text;
       } else {
         return this.mockAIResponse(prompt);
