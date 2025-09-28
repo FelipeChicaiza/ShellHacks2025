@@ -30,3 +30,22 @@ h1 {
 .font-bebas {
   font-family: var(--font-bebas-neue);
 }
+
+.newspaper-style {
+  font-family: var(--font-playfair-display);
+  background-color: #fdfdf5; /* Off-white paper color */
+  border: 1px solid #ddd;
+}
+
+.newspaper-style h1 {
+  font-family: 'Times New Roman', Times, serif; /* Classic newspaper masthead font */
+}
+
+.first-letter-large::first-letter {
+  font-size: 4rem; /* 4x the normal size */
+  font-weight: bold;
+  float: left;
+  line-height: 1;
+  margin-right: 0.5rem;
+  color: #333;
+}

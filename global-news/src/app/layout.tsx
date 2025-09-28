@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-// Import the new fonts from next/font/google
-import { Bebas_Neue, DM_Sans } from "next/font/google";
+import { Bebas_Neue, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-// Configure Bebas Neue for the title
 const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue", // Creates a CSS variable
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
-  weight: "400", // Specify the weight you need
+  weight: "400",
   display: "swap",
 });
 
-// Configure DM Sans for the body text
 const dmSans = DM_Sans({
-  variable: "--font-dm-sans", // Creates another CSS variable
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Configure the new Playfair Display font
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,8 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Add the font variables to the body's className */}
-      <body className={`${bebasNeue.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${bebasNeue.variable} ${dmSans.variable} ${playfairDisplay.variable} antialiased`}>
         {children}
       </body>
     </html>
