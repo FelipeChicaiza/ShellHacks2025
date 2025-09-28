@@ -1,12 +1,12 @@
 import Globe from "./components/Globe"; 
 import Link from "next/link";
-import HighlightsPanel from "./components/HighlightsPanel";
+//import HighlightsPanel from "./components/HighlightsPanel";
 
 export default function Home() {
   return (
     <main className="h-screen bg-gray-900 text-white overflow-hidden relative flex flex-col">
       {/* Newspaper Panel on the left */}
-      <HighlightsPanel />
+      {/*<HighlightsPanel />*/}
 
       {/* Top section for the title */}
       <div className="w-full text-center pt-10 z-10">
