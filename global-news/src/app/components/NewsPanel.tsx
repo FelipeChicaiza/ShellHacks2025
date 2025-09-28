@@ -24,7 +24,7 @@ export default function NewsPanel({ news, onClose, onMouseEnter }: NewsPanelProp
 
   return (
     <motion.div
-      className="absolute top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm"
+      className="absolute top-1/2 right-0 transform -translate-y-1/2 w-full max-w-sm mr-20"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onClose}
       initial={{ opacity: 0, x: 50 }}
@@ -32,9 +32,8 @@ export default function NewsPanel({ news, onClose, onMouseEnter }: NewsPanelProp
       exit={{ opacity: 0, x: 50 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
-      <div className="bg-gray-800 bg-opacity-80 backdrop-blur-sm text-white rounded-lg shadow-xl h-[70vh] max-h-[600px] flex flex-col">
+      <div className="bg-gray-800/50 backdrop-blur-sm text-white rounded-lg shadow-xl h-[70vh] max-h-[600px] flex flex-col">
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          {/* Apply the .font-bebas class to the panel header */}
           <h2 className="text-2xl font-bold text-white-300 font-bebas">
             News for {news[0]?.city || 'Selected City'}
           </h2>
