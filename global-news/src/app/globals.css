@@ -6,6 +6,22 @@
   /* Define the font families using the variables from layout.tsx */
   --font-bebas-neue: "Bebas Neue", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
+  --background: #000000;
+  --foreground: #ffffff;
+  --apple-blue: #007AFF;
+  --apple-gray: #1C1C1E;
+  --apple-gray-2: #2C2C2E;
+  --apple-gray-3: #3A3A3C;
+  --apple-gray-4: #48484A;
+  --apple-gray-5: #636366;
+  --apple-gray-6: #8E8E93;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {

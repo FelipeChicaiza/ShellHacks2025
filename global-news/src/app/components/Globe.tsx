@@ -29,7 +29,7 @@ export default function Globe() {
   const closeTimer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const API_URL = "http://localhost:5001/api/news";
+    const API_URL = "http://localhost:5003/api/news";
     fetch(API_URL)
       .then(response => response.json())
       .then(apiResponse => {
