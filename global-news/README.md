@@ -1,10 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🌍 Global News App
 
-## Getting Started
+The Global News App is an interactive platform that combines a 3D globe with AI-powered news verification. Users can explore stories by city, view credibility scores, and check a transparency dashboard powered by AI agents that summarize and fact-check local and global news.
 
-First, run the development server:
+This project was built during a hackathon using Next.js, React, Three.js, Express.js, and MongoDB, with AI integrations for summarization and fact-checking.
 
-```bash
+## 🚀 Features
+
+🗺️ 3D Interactive Globe: Zoom into a city to see local news.
+📰 Live News Feed: Stories ranked by credibility score.
+⚡ AI Summarizer Agent: Generates TL;DR summaries of articles.
+🔍 Fact-Check Agent: Validates headlines against trusted sources.
+🎯 Transparency Dashboard: Shows how AI agents collaborate to verify content.
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+   
+```
+git clone <your-repo-link>
+cd global-news-app
+```
+
+### 3. Install dependencies
+
+Choose your package manager:
+
+```
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+### 3. Run the development server
+```
 npm run dev
 # or
 yarn dev
@@ -14,23 +45,32 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at 👉 http://localhost:3000
+.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- app/page.tsx → Main entry point (Globe + News feed).
+- components/Globe.tsx → 3D globe built with Three.js.
+- components/NewsPanel.tsx → Side panel showing live news stories.
+- components/GlobeMarker.jsx → Markers placed on the globe for clickable cities.
+- backend/ → (optional setup) Express.js server for fetching/storing news data.
 
-## Learn More
+## 🤖 AI Integration
 
-To learn more about Next.js, take a look at the following resources:
+Summarizer Agent: Uses LLM APIs (e.g., Gemini) to create short summaries.
+Fact-Check Agent: Cross-references sources with trusted APIs (Google News API).
+These agents are designed to plug into the frontend for live verification.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Frontend:** Next.js, React, TailwindCSS, Three.js
+**Backend:** Express.js, MongoDB
+**AI:** Generative AI APIs (Gemini / LLMs)
+**Deployment**: Vercel (recommended for the future)
 
-## Deploy on Vercel
+## 📝 Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Environment variables (API keys for AI + MongoDB) should be placed in a .env.local file.
+- The project auto-updates thanks to Next.js hot reloading.
+- Fonts are optimized with next/font using Geist.
