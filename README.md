@@ -1,51 +1,63 @@
-# Global News App
+## ✨ Inspiration
 
-🥇 **Step 1: Core User Experience (Frontend First)**
+We wanted to build a news experience that feels local 🌆, global 🌍, and trustworthy ✅ at the same time. With so much misinformation 🚫 and overwhelming feeds, people often don’t know which headlines to believe. Our goal was to combine interactive visualization 🕹️ with AI-driven transparency 🤖🔍 so users can quickly see news from their city or across the globe — and understand why it’s credible.
 
-Why? Because judges need to see something working fast, even if the backend/agents are rough.
+## 🚀 What it does
 
-- Start with the globe → local feed scroll flow.
-- Build the globe using Three.js (web) or Mapbox (mobile).
-- Mock up the news feed with dummy data (JSON of headlines + summaries).
-- Add scrolling gestures (vertical scroll cards, swipe actions).
+Global News App lets users:
 
-👉 This gives you an MVP you can demo visually within a few hours.
+  - 🌍 Explore a 3D interactive globe to zoom into a city of interest.
+  - View a live local feed of stories with credibility scores.
+  - Read AI-generated summaries for fast context.
+  - Check a Transparency Dashboard that shows how agents fact-check and cross-reference stories.
 
----
+This makes news consumption faster ⏱️, more engaging 🎯, and more trustworthy 🛡️.
 
-🥈 **Step 2: Backend APIs & Database**
+## 🛠️ How we built it
 
-Once the UI works, make it real.
+### Frontend (MVP First):
 
-- Build a simple Express (Node.js) or FastAPI server.
-- Set up a news post model → { title, summary, source, geotag, credibility_score }.
-- Connect frontend feed → fetch posts from backend.
-- Use Firebase or MongoDB for speed.
+- Built an interactive globe with Three.js.
+- Created a clean news feed with React + TailwindCSS, starting with mock data.
 
-👉 Now your feed is powered by live data, not just mockups.
+### Backend & Database:
 
----
+- Developed APIs with Express.js.
+- Stored news posts (title, summary, source, geotag, credibility score) in MongoDB.
 
-🥉 **Step 3: Agents (Google ADK/A2A)**
+### AI Agents:
 
-Once the globe + feed is live, add your innovation layer.
+- Summarizer Agent → creates TL;DR versions of articles.
+- Fact-Check Agent → validates headlines against trusted sources (e.g., Google News API).
 
-- Implement Loop Agent to continuously check new posts.
-- Add 1–2 Parallel Agents (keep it simple for hackathon):
-  - Summarizer Agent (Gemini API or LLM → TL;DR news).
-  - Fact-Check Agent (cross-check against Google News API).
-- Show an AI Transparency Dashboard (even if basic) → judges will love this.
+## 🧩 Challenges we ran into
 
-👉 Even with just 2 agents working together, you can prove the “autonomous system” angle.
+- Balancing hackathon speed with feature complexity (building globe UI + AI pipeline in <48 hrs).
+- Designing a credibility scoring system that feels transparent but still lightweight.
+- Debugging rendering issues with Three.js and keeping performance smooth.
+- Coordinating backend & frontend work under tight deadlines.
 
----
+## 🏆 Accomplishments that we're proud of
 
-🏆 **Step 4: Polish for Demo**
+- Built a working globe-to-feed flow that feels polished and demo-ready.
+- Integrated AI agents for real-time summarization & fact-checking.
+- Delivered a national-scale project in hackathon time while keeping it simple & engaging.
+- Showcased a transparency layer that makes the AI process understandable (not a black box).
 
-- Add reactions (support / disagree / save).
-- Add user posting flow (optional if time).
-- Prepare a clean demo script:
-  1. Open app → globe → Miami.
-  2. Scroll feed shows AI-verified local stories.
-  3. Tap story → see AI trust report.
-  4. Show transparency dashboard of agents collaborating.
+## 📚 What we learned
+
+- How to quickly prototype with Three.js + React under time pressure.
+- The importance of visual MVPs before backend complexity.
+- How to design simple but effective multi-agent workflows.
+- That transparency in AI is just as important as accuracy when it comes to trust.
+
+## 🔮 What's next for Global News Network
+
+- 📝 User posting flow → allow communities to contribute their own stories.
+- 🤖 More AI agents → bias detection, translation for global accessibility.
+- 📱 Mobile version → gestures, push notifications for local updates.
+- 📰 Partnerships with news outlets → provide verified feeds at scale.
+
+
+# **OPEN FRONTEND FOR DETAILS ON HOW TO LOCALLY RUN THE PROJECT**
+
