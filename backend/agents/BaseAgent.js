@@ -1,5 +1,7 @@
 // BaseAgent and GoogleAIService (JS version)
-import { GoogleGenerativeAI } from '@google/generative-ai';
+// Note: `@google/generative-ai` is loaded lazily at runtime only when a real
+// GOOGLE_AI_API_KEY is present. This avoids build-time "cannot resolve"
+// errors when the package isn't installed or available in the environment.
 
 export class BaseAgent {
   constructor(name) {
@@ -11,7 +13,7 @@ export class BaseAgent {
   }
 
   // Implement in subclasses
-  async process(_data) {
+  async process() {
     throw new Error('process() not implemented');
   }
 
@@ -40,32 +42,46 @@ export class GoogleAIService {
   constructor() {
     this.genAI = undefined;
     this.model = undefined;
-    const apiKey = process.env.GOOGLE_AI_API_KEY;
-    if (apiKey && apiKey !== 'demo-key') {
-      try {
-        this.genAI = new GoogleGenerativeAI(apiKey);
-        this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-        
-      } catch (err) {
-        console.warn('Google AI initialization failed, falling back to mock responses', err);
-        this.genAI = undefined;
-      }
-    } else {
-      console.log('Google AI API key not found, using fallback responses');
+    this.apiKey = process.env.GOOGLE_AI_API_KEY;
+    if (!this.apiKey || this.apiKey === 'demo-key') {
+      console.log('Google AI API key not found or demo key used; using fallback responses');
+    }
+    this._initialized = false;
+  }
+
+  async _initIfNeeded() {
+    if (this._initialized) return;
+    if (!this.apiKey || this.apiKey === 'demo-key') {
+      this._initialized = true; // nothing to do, will use mocks
+      return;
+    }
+    try {
+      // Dynamic import so bundlers don't require the package at build time
+      const mod = await import('@google/generative-ai');
+      const GoogleGenerativeAI = mod.GoogleGenerativeAI || mod.default || mod;
+      this.genAI = new GoogleGenerativeAI(this.apiKey);
+      this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      this._initialized = true;
+      console.log('Google Generative AI initialized');
+    } catch (err) {
+      console.warn('Google AI initialization failed, falling back to mock responses', err);
+      this.genAI = undefined;
+      this.model = undefined;
+      this._initialized = true;
     }
   }
 
   async generateText(prompt) {
     try {
-      if (this.model && process.env.GOOGLE_AI_API_KEY) {
+      await this._initIfNeeded();
+      if (this.model) {
         const result = await this.model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
         console.log('Google Gemini AI response generated successfully');
         return text;
-      } else {
-        return this.mockAIResponse(prompt);
       }
+      return this.mockAIResponse(prompt);
     } catch (error) {
       console.error('Google AI API error:', error);
       return this.mockAIResponse(prompt);

@@ -1,22 +1,5 @@
-/*import express from 'express';
-import {
-  getAllNews,
-  createNews
-} from '../controllers/newsController.js';
-
-const router = express.Router();
-
-// GET /api/news - fetch all news posts
-router.get('/', getAllNews);
-
-// POST /api/news - create a new news post
-router.post('/', createNews);
-
-
-export default router;
-*/
-
 import { Router } from 'express';
+import {createNews, getNewsByCity} from '../controllers/news.controller.js';
 
 const newsRouter = Router();
 
@@ -27,13 +10,9 @@ newsRouter.get('/', (req, res) => {
 });
 
 
-newsRouter.get('/state/:state', (req, res) => {
+newsRouter.get('/city/:city', getNewsByCity);
 
-  res.send({title: "Fetch news post by state"});
-});
 // Example route to create a new news post
-newsRouter.post('/', (req, res) => {
-  res.send({title: "Create a new news post"});
-});
+newsRouter.post('/', createNews);
 
 export default newsRouter;

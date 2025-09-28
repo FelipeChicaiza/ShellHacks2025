@@ -49,6 +49,7 @@ export class FactCheckAgent extends BaseAgent {
       const score = parseInt(match ? match[0] : '70', 10);
       return Math.min(Math.max(score, 0), 100);
     } catch (error) {
+      console.log('Error analyzing content, using basic analysis', error);
       return this.basicContentAnalysis(newsPost);
     }
   }
@@ -81,7 +82,9 @@ export class FactCheckAgent extends BaseAgent {
       const report = await this.googleAI.generateText(prompt);
       return report.trim();
     } catch (error) {
+      console.log('Error generating fact-check report, using fallback', error);
       return this.generateFallbackReport(score, details);
+      
     }
   }
 

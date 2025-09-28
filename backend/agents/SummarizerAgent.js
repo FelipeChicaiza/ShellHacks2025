@@ -27,6 +27,7 @@ export class SummarizerAgent extends BaseAgent {
       const summary = await this.googleAI.generateText(prompt);
       return summary.trim();
     } catch (error) {
+      console.log('Error generating summary, using fallback', error);
       return this.createFallbackSummary(newsPost);
     }
   }
