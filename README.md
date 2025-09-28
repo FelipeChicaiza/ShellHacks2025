@@ -59,5 +59,5 @@ This makes news consumption faster ⏱️, more engaging 🎯, and more trustwor
 - 📰 Partnerships with news outlets → provide verified feeds at scale.
 
 
-# **OPEN FRONTEND FOR DETAILS ON HOW TO LOCALLY RUN THE PROJECT**
+# **OPEN GLOBAL-NEWS FILE FOR DETAILS ON HOW TO LOCALLY RUN THE PROJECT**
 
