@@ -1,17 +1,17 @@
 ## ✨ Inspiration
 
-We wanted to build a news experience that feels local 🌆, global 🌍, and trustworthy ✅ at the same time. With so much misinformation 🚫 and overwhelming feeds, people often don’t know which headlines to believe. Our goal was to combine interactive visualization 🕹️ with AI-driven transparency 🤖🔍 so users can quickly see news from their city or across the globe — and understand why it’s credible.
+We wanted to build a news experience that feels local, global, and trustworthy at the same time. With so much misinformation and overwhelming feeds, people often don’t know which headlines to believe. Our goal was to combine interactive visualization with AI-driven transparency so users can quickly see news from their city or across the globe and understand why it’s credible.
 
 ## 🚀 What it does
 
 Global News App lets users:
 
-  - 🌍 Explore a 3D interactive globe to zoom into a city of interest.
+  - Explore a 3D interactive globe to zoom into a city of interest.
   - View a live local feed of stories with credibility scores.
   - Read AI-generated summaries for fast context.
   - Check a Transparency Dashboard that shows how agents fact-check and cross-reference stories.
 
-This makes news consumption faster ⏱️, more engaging 🎯, and more trustworthy 🛡️.
+This makes news consumption faster, more engaging, and more trustworthy.
 
 ## 🛠️ How we built it
 
@@ -37,7 +37,7 @@ This makes news consumption faster ⏱️, more engaging 🎯, and more trustwor
 - Debugging rendering issues with Three.js and keeping performance smooth.
 - Coordinating backend & frontend work under tight deadlines.
 
-## 🏆 Accomplishments that we're proud of
+## Accomplishments that we're proud of
 
 - Built a working globe-to-feed flow that feels polished and demo-ready.
 - Integrated AI agents for real-time summarization & fact-checking.
@@ -51,12 +51,12 @@ This makes news consumption faster ⏱️, more engaging 🎯, and more trustwor
 - How to design simple but effective multi-agent workflows.
 - That transparency in AI is just as important as accuracy when it comes to trust.
 
-## 🔮 What's next for Global News Network
+## What's next for Global News Network
 
-- 📝 User posting flow → allow communities to contribute their own stories.
-- 🤖 More AI agents → bias detection, translation for global accessibility.
-- 📱 Mobile version → gestures, push notifications for local updates.
-- 📰 Partnerships with news outlets → provide verified feeds at scale.
+- User posting flow → allow communities to contribute their own stories.
+- More AI agents → bias detection, translation for global accessibility.
+- Mobile version → gestures, push notifications for local updates.
+- Partnerships with news outlets → provide verified feeds at scale.
 
 
 # **OPEN GLOBAL-NEWS FILE FOR DETAILS ON HOW TO LOCALLY RUN THE PROJECT**
