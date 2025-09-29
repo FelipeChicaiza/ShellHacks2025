@@ -6,19 +6,19 @@ This project was built during a hackathon using Next.js, React, Three.js, Expres
 
 ## 🚀 Features
 
-🗺️ 3D Interactive Globe: Zoom into a city to see local news.
-📰 Live News Feed: Stories ranked by credibility score.
-⚡ AI Summarizer Agent: Generates TL;DR summaries of articles.
-🔍 Fact-Check Agent: Validates headlines against trusted sources.
-🎯 Transparency Dashboard: Shows how AI agents collaborate to verify content.
+3D Interactive Globe: Zoom into a city to see local news.
+Live News Feed: Stories ranked by credibility score.
+AI Summarizer Agent: Generates TL;DR summaries of articles.
+Fact-Check Agent: Validates headlines against trusted sources.
+Transparency Dashboard: Shows how AI agents collaborate to verify content.
 
 ## 🛠️ Getting Started
 
 ### 1. Clone the repository
    
 ```
-git clone <your-repo-link>
-cd global-news-app
+git clone https://github.com/FelipeChicaiza/ShellHacks2025.git
+cd global-news
 ```
 
 ### 3. Install dependencies
